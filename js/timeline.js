@@ -1,4 +1,7 @@
 getPosts();
+createPost();
+
+document.querySelector('#post').addEventListener('click', post);
 
 function getPosts() {
     var api_token = sessionStorage.getItem('api_token');
@@ -20,26 +23,35 @@ function renderPostsList(posts) {
 }
 
 function createPost(post) {
-    var postListItem =`<div class="new post">
-                    <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="postIMG" src="${post.image}" alt="${post.uname}profile photo">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">${post.uname}</h4>
-                                <h6 class="media-subhead">${name}</h6>
-                                <textarea class="form-control" placeholder=${post.body} rows="2"></textarea>
-                            </div>
-                        </li>
-                    </ul>
-                </div>`    
+    
 }
-    // var currentPostHTML = document.querySelector('#posts').innerHTML;
+    var currentPostHTML = document.querySelector('#posts').innerHTML;
 
-    document.querySelector('#posts').innerHTML += postListItem;
+function createPost() {
+    var body = document.querySelector('#body').value;
 
+    fetch('https://nameless-earth-94324.herokuapp.com/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+            body: body,
+        })
+    })
+
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            // console.log(response);
+
+            if (response.api_token) {
+                sessionStorage.setItem('api_token', response.api_token);
+                location.href = 'timeline.html';
+            }
+        })
+}
 
  

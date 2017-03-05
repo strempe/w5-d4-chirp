@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("../img/background-img.png");
+    background-position: center center;
+    background-attachment: fixed;
+}
+/*sign-in sign -out*/
+nav {
+    border: 1px soild whitesmoke;
+    background: whitesmoke;
+    padding: 25px;
+}
+
+nav img{
+    width: 90px;
+    height: auto;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;  
+}
+.panel {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    height: auto;
+    
+    border-radius: 8%;
+}
+.panel-body {
+    padding: 40px;
+   
+}
+.panel-body label {
+    color: darkslategrey;
+    font-size: 10px;
+    padding-left: 5px;
+
+}
+.panel-body h1 {
+    color: darkslategrey;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding:0;
+}
+
+.panel-body h2 {
+    color: darkslategrey;
+    font-size: 20px;
+    text-align: center;
+    padding:0;
+    margin-top: -20px;
+}
+
+.panel-body button {
+    margin-top: 30px;
+    align-items: center;
+    background-color: darkslategrey;
+    padding-left: 40px;
+   padding-right: 40px;
+    color: whitesmoke;
+}
+
+/*h6 sign up and sign in links*/
+.sign {
+    text-align: center;
+    color: darkslategrey;
+}
+/*TIMELINE*/
+.title {
+    border: 1px soild whitesmoke;
+    background: whitesmoke;
+    padding: 25px;
+}
+
+.title h1 {
+    font-size: 35px;
+    padding: none 0;
+}
+
+.title h2 {
+    font-size: 18px;
+    padding: none 0;
+}
+
+.post {
+    margin: 0;  
+    
+}
+
+.post img{
+    max-width: 64px;
+    max-height: 64px;   
+}
+
+/*USERS*/
+.card {
+    padding: 20px 20px 20px 20px;  
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    max-width: 850px; 
+    margin-top: 30px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+

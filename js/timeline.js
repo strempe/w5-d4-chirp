@@ -1,57 +1,75 @@
 getPosts();
-createPost();
+// document.querySelector('#message').addEventListener('keypress', function(e) {
+//     if (e.key === 'Enter') {
+//         sendMessage();
+//     }
+// })
+// document.querySelector('#logout').addEventListener('click', function() {
+//     sessionStorage.clear();
+//     location.href = 'signin.html?logout=yes';
+//     // sessionStorage.removeItem('token');
+// });
 
-document.querySelector('#post').addEventListener('click', post);
+document.querySelector('#post').addEventListener('click', createPost);
+var api_token = sessionStorage.getItem('api_token');
 
 function getPosts() {
-    var api_token = sessionStorage.getItem('api_token');
-    // var uname = location.href.split('?')[1].split('=').pop();
 
     fetch('https://nameless-earth-94324.herokuapp.com/timeline?api_token=' + api_token)
     .then(function(response) {
         return response.json();
     })
+    
     .then(function(response) {
-        renderPostList(response);
+        // console.log(response)
+        renderPostList(response)
     })
 }
 
-function renderPostsList(posts) {
+// taking response and pulling the info needed
+function renderPostList(posts) {
     console.log(posts);
-    posts = posts.reverse();
-    posts.forEach(createPost);
+    // posts = posts.reverse();
+    posts.forEach(function(post){
+        var postListItem = `<div class="list-group-item">${post.user.name}: ${post.body}</div>`;
+    // var currentPostHTML = document.querySelector('#timeline');
+    
+
+    document.querySelector('#timeline').innerHTML += postListItem;  
+    });
 }
 
-function createPost(post) {
-    
-}
-    var currentPostHTML = document.querySelector('#posts').innerHTML;
 
 function createPost() {
     var body = document.querySelector('#body').value;
-
-    fetch('https://nameless-earth-94324.herokuapp.com/signup', {
+    // var currentPostHTML = document.querySelector('#post').innerHTML;
+    console.log(body)
+    
+    fetch('https://nameless-earth-94324.herokuapp.com/post', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-
         body: JSON.stringify({
             body: body,
+            api_token: api_token
         })
     })
-
-        .then(function(response) {
+    .then(function(response) {
             return response.json();
+            console.log('itworked!')
         })
         .then(function(response) {
             // console.log(response);
-
-            if (response.api_token) {
-                sessionStorage.setItem('api_token', response.api_token);
+            if (response) {
+                // sessionStorage.setItem('api_token', response.api_token);
                 location.href = 'timeline.html';
             }
         })
+        
 }
+
+
+
 
  

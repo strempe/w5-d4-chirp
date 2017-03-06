@@ -32,14 +32,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-2">   
-                    <img src="../img/avatar.svg">
+                    <img src="../img/avatar.svg" alt="avatar photo">
                 </div>   
 
                 <div class="col-sm-8">
                     <h1 class="userName">BlueBerry_Goldfish</h1>
                     <h2 class="name">Kat Wellington</h2>
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default btn btn-group-justified">explore</button>
+                        <button type="button" id="users" class="btn btn-default btn btn-group-justified">explore</button>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" id="logout" class="btn btn-default btn btn-group-justified">logout</button>
                     </div>
                 </div>     
             </div>        
@@ -51,47 +54,10 @@
     <div class="container">
        <div class="row">
             <div class="col-sm-12">
+                <div class="card">
 <!--JS This is where the new post is supposed to go-->
 
-                <div class="post">
-                    <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="../img/avatar.svg" alt="../img/avatar.svg">
-                                </a>
-                            </div>
-                            <div class="media-body" id="body">
-                                <textarea class="form-control" placeholder="What's on your mind?" rows="2"></textarea>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-primary">post</button>
-                    </div>
-                </div>    
-                   
-              
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">     
-                <div class="post">
-                    <div class="card">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                                <a href="../img/avatar.svg">
-                                <img class="media-object" src="../img/avatar.svg" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Blueberry_Goldfish</h4>
-                                    <h6 class="media-subhead">Kat Wellington</h6>
-                                    Brunch craft beer PBR&B, 8-bit jean shorts austin hot chicken asymmetrical thundercats offal paleo cronut selvage. 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="card">
+                    <div class="post">
                         <ul class="media-list">
                             <li class="media">
                                 <div class="media-left">
@@ -99,20 +65,42 @@
                                         <img class="media-object" src="../img/avatar.svg" alt="../img/avatar.svg">
                                     </a>
                                 </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Blueberry_Goldfish</h4>
-                                    <h6 class="media-subhead">Kat Wellington</h6>
-                                    Brunch craft beer PBR&B, 8-bit jean shorts austin hot chicken asymmetrical thundercats offal paleo cronut selvage. 
+                                <div class="media-body" >
+                                    <textarea id="body" class="form-control" placeholder="What's on your mind?" rows="1"></textarea>
                                 </div>
                             </li>
                         </ul>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" id="post" class="btn btn-primary">post</button>
+                        </div>
+                    </div>    
+                </div> 
+            </div>
+        </div>
+    </div>
+              
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">     
+                <div class="post">
+                    <div class="card">
+                        <div class="panel-heading text-center">
+                            <h4>post</h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group" id="timeline">
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br/><br/><br/>
 
-    <script src="js/timeline.js"></script>
+    <br/>
+    <br/>
+
+
+<script src="js/timeline.js"></script>
 </body>
 </html>

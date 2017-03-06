@@ -1,31 +1,26 @@
-document.querySelector('#users').addEventListener('click', function(e) {
-    var userListItem = e.target;
-    var userId = userListItem.dataset.id;
+// document.querySelector('#users').addEventListener('click', function(e) {
+//     var userListItem = e.target;
+//     var userId = userListItem.dataset.id;
 
-    location.href = 'messages.html?userId=' + userId;
-});
+//     location.href = 'messages.html?userId=' + uname;
+// });
 
 document.querySelector('#logout').addEventListener('click', function() {
     sessionStorage.clear();
-    location.href = 'index.html?logout=yes';
+    location.href = 'signin.html?logout=yes';
     // sessionStorage.removeItem('token');
 });
 
-document.querySelector('#sendMessage').addEventListener('click', sendMessage);
+document.querySelector('#follow').addEventListener('click', follow);
 
-document.querySelector('#message').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-})
 
 
 getUsers();
 
 function getUsers() {
-    var token = sessionStorage.getItem('token');
+    var token = sessionStorage.getItem('api_token');
 
-    fetch('http://acc70ddc.ngrok.io/users')
+    fetch('https://nameless-earth-94324.herokuapp.com/users')
     .then(function(response) {
         return response.json();
     })
@@ -38,29 +33,25 @@ function renderUsersList(users) {
     console.log(users);
 
     users.forEach(function(user) {
-        var userListItem = `<li data-id="${user.id}" class="list-group-item">${user.username}</li>`;
+        var userListItem = `
 
+        <li class="list-group-item">${user.photo}: ${user.uname}<button type="submit" ${user.follow} class="btn btn-default">follow</button></li>`;
+
+               
         document.querySelector('#users').innerHTML += userListItem;
-    });
+    });;
 }
 
-function sendMessage() {
-    var message = document.querySelector('#message').value;
-    var token = sessionStorage.getItem('token');
+function follow() {
 
-    document.querySelector('#message').value = '';
+    document.querySelector('#follow').value;
 
-    fetch('http://acc70ddc.ngrok.io/messages', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+    fetch('https://nameless-earth-94324.herokuapp.com/users', {
 
-        // Back-end controls the left side, properties, of this object
-        // Front-end controls the variables names and values on the right side
-        body: JSON.stringify({
-            body: message,
-            token: token
+        users: JSON.stringify({
+            uname: uname,
+            name: name,
+            follow: follow
         })
     })
         .then(function(response) {
@@ -68,14 +59,6 @@ function sendMessage() {
         })
         .then(function(response) {
             // console.log(response);
-
-            var messageSent = document.querySelector('#messageSent');
-            messageSent.classList.remove('hidden');
-            messageSent.children[0].innerHTML = 'Message Sent: ' + response.body;
-
-            setTimeout(function() {
-                messageSent.classList.add('hidden');
-            }, 3000);
 
         })
 }
